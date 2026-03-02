@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Solicita informes de cursos y diplomados de Academia Digital GameLab." />
+  <title>Informes y contacto | Academia Digital GameLab</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header>
+    <div class="container navbar">
+      <a class="brand" href="index.html">
+        <img src="logo-gamelab.png" alt="Logo Academia Digital GameLab" />
+        <div>
+          <strong>Academia Digital GameLab</strong>
+          <span>Informes y contacto</span>
+        </div>
+      </a>
+      <nav>
+        <a href="index.html">Inicio</a>
+        <a href="oferta-academica.html">Oferta académica</a>
+        <a href="diplomado-abril.html">Diplomado de abril</a>
+        <a class="active" href="contacto.html">Informes</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="section">
+    <div class="container two-col">
+      <div>
+        <div class="badge">Solicita información</div>
+        <h1>Hablemos de cursos y diplomados</h1>
+        <p class="lead">Esta página está pensada para padres de familia y directivos escolares interesados en llevar formación tecnológica de calidad a niños y jóvenes.</p>
+
+        <div class="contact-list" style="margin-top: 24px;">
+          <div class="contact-item">
+            <strong>Teléfono / WhatsApp</strong>
+            <span>55 4771 9349</span>
+          </div>
+          <div class="contact-item">
+            <strong>Correo electrónico</strong>
+            <span>Gamelabmx@outlook.com</span>
+          </div>
+          <div class="contact-item">
+            <strong>Instalaciones</strong>
+            <span>Liceo Humanista Cervantes, Fracc. Las Américas, Ecatepec, Edo. Méx.</span>
+          </div>
+          <div class="contact-item">
+            <strong>Fundador</strong>
+            <span>Vicente Rodriguez Miranda</span>
+          </div>
+        </div>
+
+        <div class="actions">
+          <a class="btn btn-primary" href="mailto:Gamelabmx@outlook.com">Enviar correo</a>
+          <a class="btn btn-secondary" href="tel:5547719349">Llamar ahora</a>
+        </div>
+      </div>
+
+      <div class="form-card">
+        <h2>Formulario de contacto</h2>
+        <p>Listo para publicarse como formulario visual en GitHub Pages. Si después quieres, puedo conectarlo a Formspree, Google Forms o WhatsApp.</p>
+
+        <form id="whatsappForm">
+          <label for="nombre">Nombre</label>
+          <input id="nombre" type="text" placeholder="Escribe tu nombre" />
+
+          <label for="tipo">Me interesa como</label>
+          <select id="tipo">
+            <option>Padre / madre de familia</option>
+            <option>Escuela primaria</option>
+            <option>Escuela secundaria</option>
+            <option>Otro centro educativo</option>
+          </select>
+
+          <label for="contacto">Teléfono o correo</label>
+          <input id="contacto" type="text" placeholder="Ej. 55 0000 0000 / correo@ejemplo.com" />
+
+          <label for="mensaje">Mensaje</label>
+          <textarea id="mensaje" placeholder="Cuéntanos qué curso o diplomado te interesa"></textarea>
+
+          <button class="btn btn-whatsapp" id="whatsappBtn" type="button">Solicitar informes por WhatsApp</button>
+          <p class="small-note">Al dar clic, se abrirá WhatsApp con tu mensaje prellenado para enviarlo directamente.</p>
+        </form>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <div class="container footer-grid">
+      <div>
+        <p><strong>Academia Digital GameLab</strong><br />Academia de Desarrollo Tecnológico y Digital para Niños y Jóvenes.</p>
+      </div>
+      <div class="footer-links">
+        <a href="index.html">Inicio</a>
+        <a href="oferta-academica.html">Oferta académica</a>
+        <a href="diplomado-abril.html">Diplomado de abril</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    (function () {
+      const form = document.getElementById('whatsappForm');
+      const button = document.getElementById('whatsappBtn');
+      const phone = '525547719349';
+
+      function buildMessage() {
+        const nombre = document.getElementById('nombre').value.trim();
+        const tipo = document.getElementById('tipo').value.trim();
+        const contacto = document.getElementById('contacto').value.trim();
+        const mensaje = document.getElementById('mensaje').value.trim();
+
+        const lines = [
+          'Hola, me gustaría solicitar informes de Academia Digital GameLab.',
+          '',
+          'Nombre: ' + (nombre || 'No indicado'),
+          'Interés como: ' + (tipo || 'No indicado'),
+          'Teléfono o correo: ' + (contacto || 'No indicado'),
+          'Mensaje: ' + (mensaje || 'Me gustaría recibir información sobre sus cursos y diplomados.')
+        ];
+
+        return lines.join('\n');
+      }
+
+      button.addEventListener('click', function () {
+        const url = 'https://wa.me/' + phone + '?text=' + encodeURIComponent(buildMessage());
+        window.open(url, '_blank');
+      });
+
+      form.addEventListener('submit', function (event) {
+        event.preventDefault();
+        button.click();
+      });
+    })();
+  </script>
+</body>
+</html>
